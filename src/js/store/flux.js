@@ -35,6 +35,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().loadAgendaContacts()
 			}
 
+			// updateContact: async (contactId) => {
+			// 	const respone = await fetch(`https://playground.4geeks.com/contact/agendas/MKirby/contacts/${contactId}`, {
+			// 		method: 'PUT',
+			// 		body: SON.stringify(contactId), 
+			// 		headers: {
+			// 			'Content-Type': 'application/json'
+			// 		}
+			// 	});
+			// 	if (!response.ok) {
+			// 		throw new Error(response.status, response.statusText)
+			// 	}
+			// 	setStore({contacts: data.contacts})
+			// }
+
 			// createNewContact: async (contactObject) => {
 			// 	const response = await fetch("https://playground.4geeks.com/contact/agendas/MKirby/contacts"),
 			// 	method: "POST",
@@ -43,6 +57,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 		'Content-Type': 'application/json'
 			// 	}
 			// }
+
+
 
 			// You will need function to:
 			// POST new contact through the API
