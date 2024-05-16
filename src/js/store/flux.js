@@ -35,14 +35,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().loadAgendaContacts()
 			}
 
-			createNewContact: async (contactObject) => {
-				const response = await fetch("https://playground.4geeks.com/contact/agendas/MKirby/contacts"),
-				method: "POST",
-				body: JSON.stringify(contactObject),
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			}
+			// createNewContact: async (contactObject) => {
+			// 	const response = await fetch("https://playground.4geeks.com/contact/agendas/MKirby/contacts"),
+			// 	method: "POST",
+			// 	body: JSON.stringify(contactObject),
+			// 	headers: {
+			// 		'Content-Type': 'application/json'
+			// 	}
+			// }
 
 			// You will need function to:
 			// POST new contact through the API
