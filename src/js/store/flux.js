@@ -33,7 +33,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					throw new Error(response.status, response.statusText)
 				}
 				getActions().loadAgendaContacts()
-			}
+			},
+
+
 
 			// updateContact: async (contactId) => {
 			// 	const respone = await fetch(`https://playground.4geeks.com/contact/agendas/MKirby/contacts/${contactId}`, {
@@ -49,14 +51,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	setStore({contacts: data.contacts})
 			// }
 
-			// createNewContact: async (contactObject) => {
-			// 	const response = await fetch("https://playground.4geeks.com/contact/agendas/MKirby/contacts"),
-			// 	method: "POST",
-			// 	body: JSON.stringify(contactObject),
-			// 	headers: {
-			// 		'Content-Type': 'application/json'
-			// 	}
-			// }
+			createNewContact: contactObject => {
+				let options = {
+					method: "POST",
+					body: JSON.stringify(contactObject),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+				fetch("https://playground.4geeks.com/contact/agendas/MKirby/contacts", options)
+				.then (res => {
+					if (!res.ok) throw Error (res.statusText);
+					return res
+				})
+				.then (res => console.log("successfully created", res))
+			},
+
+			addContact: (newContact) => {
+				const store =getStore();
+				let revisedStore = [...store.contacts, newContact];
+				getActions().createNewContact(newContact);
+				setStore({contacts: revisedStore});
+			},
+
+			saveContact: (name, phone, email, address, id) => {
+				let newContact = {
+					name: name,
+					phone: phone,
+					email: email,
+					address: address,
+					id: id
+				}
+				getActions().addContact(newContact);
+			}
+
+
+
+
+
+
 
 
 
