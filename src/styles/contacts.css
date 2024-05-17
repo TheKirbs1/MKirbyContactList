@@ -1,0 +1,13 @@
+button {
+    background: none;
+    border: none;
+}
+
+.fullContact {
+    background: lightblue;
+    border: grey;
+    border-style: solid;
+    border-width: 1px;
+    /* border-bottom: none; */
+    margin: 0px 30px
+}
