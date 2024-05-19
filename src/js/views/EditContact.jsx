@@ -1,12 +1,14 @@
 import React,{useContext, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/appContext";
 
 
 
 
 
-const AddContact = () => {
+const EditContact = () => {
 
+    let navigate = useNavigate();
 
     const {store, actions} = useContext(Context);
     const [name, setName] = useState("");
@@ -67,4 +69,4 @@ const AddContact = () => {
         </div>
 )}
 
-export default AddContact;
+export default EditContact;
