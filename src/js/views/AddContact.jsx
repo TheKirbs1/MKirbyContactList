@@ -27,12 +27,12 @@ const AddContact = () => {
     return (
         <div>
             <div className="container-fluid text-end" id="addButton">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Add New Contact
                 </button>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-xl">
             <div className="modal-content">
             <div className="modal-header">
                 <h2 className="modal-title">Add a new contact</h2>
@@ -41,19 +41,19 @@ const AddContact = () => {
             <div className="modal-body">
                 <form>
                     <div className="form-group">
-                        <label for="Full-Name">Full Name</label>
+                        <label htmlFor="Full-Name">Full Name</label>
                         <input type="name" className="form-control" id="Full-Name" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className="form-group">
-                        <label for="Email">Email address</label>
+                        <label htmlFor="Email">Email address</label>
                         <input type="email" className="form-control" id="Email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="form-group">
-                        <label for="Phone-Number">Phone</label>
+                        <label htmlFor="Phone-Number">Phone</label>
                         <input type="phone-number" className="form-control" id="Phone-Number" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
                     </div>
                     <div className="form-group">
-                        <label for="Address">Address</label>
+                        <label htmlFor="Address">Address</label>
                         <input type="address" className="form-control" id="Address" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
                     </div>
                 </form>

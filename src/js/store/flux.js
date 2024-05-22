@@ -30,24 +30,63 @@ const getState = ({ getStore, getActions, setStore }) => {
                 getActions().loadAgendaContacts();
             },
 
-            updateContactHome: async (contactId, name, phone, email, address) => {
-                const response = await fetch(`https://playground.4geeks.com/contact/agendas/MKirby/contacts/${contactId}`, {
+            getAgendaContacts: async () => {
+                const response = await fetch("https://playground.4geeks.com/contact/agendas/MKirby",{
+                method: "GET",
+                header: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                if (!response.ok) {
+                    throw new Error(response.status, response.statusText);
+                }
+                const data = await response.json();
+                setStore({ contacts: data });
+                return getStore().contacts 
+                },
+
+            updateContactHome: (contactId, name, phone, email, address) => {
+                const store = getStore()
+                fetch(`https://playground.4geeks.com/contact/agendas/MKirby/contacts/${contactId}`, {
                     method: "PUT",
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        full_name: name,
-                        phone: phone,
-                        email: email,
-                        address: address,
-                        agenda_slug: "MKirby",
-                    }), 
-                });
-                if (!response.ok) {
-                    throw new Error(response.status, response.statusText);
-                }
-                getActions().loadAgendaContacts();  // Reload contacts to get updated list
+                            full_name: name,
+                            phone: phone,
+                            email: email,
+                            address: address,
+                            slug: "MKirby"
+                    }),
+                })
+                .then((response)=> {
+                    if (!response.ok) {
+                        throw new Error(response.status, response.statusText);
+                    }
+                    return response.json()
+                })
+
+                .then((updateContact)=> {
+                    const updatedContactId = store.contacts.map((user) =>{
+                        if(user.id === contactId) {
+                            return {
+                                ...user,
+                                full_name: updateContact.full_name,
+                                phone: updateContact.email,
+                                email: updateContact.email,
+                                address: updateContact.address
+                            }
+                        }
+                        return user
+                    })
+                    setStore({
+                        contacts: updatedContactId
+                    })
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
             },
 
             createNewContact: contactObject => {

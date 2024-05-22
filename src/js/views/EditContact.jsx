@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const EditContact = ({ contact }) => {
@@ -10,12 +10,13 @@ const EditContact = ({ contact }) => {
     const [phone, setPhone] = useState(contact?.phone || "");
     const [email, setEmail] = useState(contact?.email || "");
     const [address, setAddress] = useState(contact?.address || "");
-
-    const updateForm = (e) => {
-        e.preventDefault();
-        actions.updateContactHome(name, phone, email, address, contact.id);
+    const {id} = useParams()
+    const updateForm = () => {
+        actions.updateContactHome(name, phone, email, address, contact);
         navigate('/');
+        actions.getAgendaContacts()
     };
+    console.log(contact)
 
     return (
         <div>
@@ -62,5 +63,6 @@ const EditContact = ({ contact }) => {
         </div>
     );
 };
+
 
 export default EditContact;
