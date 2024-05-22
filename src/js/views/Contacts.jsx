@@ -12,9 +12,9 @@ const Contacts = () => {
     return (
         <div className="contactInfo">
         {
-            store.contacts.map(contact => {
+            store.contacts.map((contact, id) => {
                 return(
-                    <div key={contact.id} className="fullContact bg-light">
+                    <div key={id} className="fullContact bg-light">
                         <ContactCard name={contact.name} address={contact.address} phone={contact.phone} email={contact.email} />
                        
                         {/* <button onClick={() => actions.updateContactHome(contact.id)}> */}

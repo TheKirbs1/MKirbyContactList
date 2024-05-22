@@ -45,15 +45,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                 return getStore().contacts 
                 },
 
-            updateContactHome: (contactId, name, phone, email, address) => {
+            updateContactHome: (Id, name, phone, email, address) => {
                 const store = getStore()
-                fetch(`https://playground.4geeks.com/contact/agendas/MKirby/contacts/${contactId}`, {
+                console.log(Id)
+                fetch(`https://playground.4geeks.com/contact/agendas/MKirby/contacts/${Id}`, {
                     method: "PUT",
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                            full_name: name,
+                            name: name,
                             phone: phone,
                             email: email,
                             address: address,
@@ -72,8 +73,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                         if(user.id === contactId) {
                             return {
                                 ...user,
-                                full_name: updateContact.full_name,
-                                phone: updateContact.email,
+                                name: updateContact.name,
+                                phone: updateContact.phone,
                                 email: updateContact.email,
                                 address: updateContact.address
                             }

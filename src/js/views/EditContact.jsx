@@ -12,7 +12,7 @@ const EditContact = ({ contact }) => {
     const [address, setAddress] = useState(contact?.address || "");
     const {id} = useParams()
     const updateForm = () => {
-        actions.updateContactHome(name, phone, email, address, contact);
+        actions.updateContactHome(contact, name, phone, email, address);
         navigate('/');
         actions.getAgendaContacts()
     };
