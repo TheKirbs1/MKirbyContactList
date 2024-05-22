@@ -13,10 +13,10 @@ const Contact = () => {
                 {
                     store.contacts.map(contact => {
                         return (
-                                <div className="" key={contact.id}>
+                                <div className="bg-light border border-dark mx-3 my-1" key={contact.id}>
                                     <ContactCard name={contact.name} address={contact.address} phone={contact.phone} email={contact.email} /> 
                                     <div className="d-flex justify-content-center">
-                                        <div className="card-footer d-flex justify-content-center" style={{ width: '18rem' }}>
+                                        <div className="d-flex justify-content-center" style={{ width: '18rem' }}>
                                             <Link to={"/editcontact/"+ contact.id}>
                                                 <button className="btn">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-fill" viewBox="0 0 16 16">
